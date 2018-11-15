@@ -36,19 +36,17 @@ F = reduce(lambda a, b: a | b, exprs)
 
 H = F
 while True:
-  Hp = H
-  H = Hp | compose(Hp, F)
-  if H.equivalent(Hp):
-      break
+    Hp = H
+    H = Hp | compose(Hp, F)
+    if H.equivalent(Hp):
+        break
 
 S_bool = [bool_array(i) for i in S]
-
-P_total = True
 
 X = bddvars('x', 5)
 Y = bddvars('y', 5)
 
-P = H.smoothing(X).smoothing(Y).equivalent(True)
+P = Not(H).smoothing().equivalent(False)
 
 print("P is true for all nodes i, j" if P else "P is false for all nodes i, j")
 
