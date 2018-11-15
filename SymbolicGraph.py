@@ -23,7 +23,7 @@ def compose(r1, r2):
     Z = bddvars('z', 5)
     Y = bddvars('y', 5)
     X = bddvars('x', 5)
-    for i in range(0, 4):
+    for i in range(0, 5):
         r1 = r1.compose({Y[i]: Z[i]})
         r2 = r2.compose({X[i]: Z[i]})
     return (r1 & r2).smoothing(Z)
