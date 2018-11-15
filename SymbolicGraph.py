@@ -29,7 +29,7 @@ def compose(r1, r2):
     return (r1 & r2).smoothing(Z)
 
 
-S = range(0, 31)
+S = range(0, 32)
 G = [(i, j) for i in S for j in S if (i+3) % 32 == j % 32 or (i+7) % 32 == j % 32]
 exprs = [create_bool_formula(i, j) for i, j in G]
 F = reduce(lambda a, b: a | b, exprs)
